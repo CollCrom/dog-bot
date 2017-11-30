@@ -1,7 +1,7 @@
 const Discord = require('discord.io');
 const logger = require('winston');
-const auth = require('./auth.json');
 const fs = require("fs");
+require('dotenv').config();
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -16,7 +16,7 @@ const dogsArr = text.split("\n")
 
 // Initialize Discord Bot
 const bot = new Discord.Client({
-   token: auth.token,
+   token: process.env.BOT_TOKEN,
    autorun: true
 });
 bot.on('ready', function (evt) {

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.io": "^2.5.3",
+    "dotenv": "^4.0.0",
     "fs": "0.0.1-security",
     "winston": "^2.4.0"
   }
