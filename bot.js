@@ -25,6 +25,10 @@ bot.on('ready', function (evt) {
 
 
 bot.on('message', function (user, userID, channelID, message, evt) {
+    bot.sendMessage({
+        to: channelID,
+        message: 'hello'
+    })
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) === '!') {
