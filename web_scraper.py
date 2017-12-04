@@ -21,7 +21,7 @@ for photo in photos:
 if not pic_arr:
 	print('sorry we couldn\'t find anything =[')
 else:
-	print(random.choice(pic_arr), len(pic_arr))
+	print(random.choice(pic_arr))
 
 sys.stdout.flush()
 browser.quit()
