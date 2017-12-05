@@ -11,20 +11,22 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 
-
 // Initialize Discord Bot
 const bot = new Discord.Client({
    token: process.env.BOT_TOKEN,
    autorun: true
 });
-bot.on('ready', function (evt) {
+
+
+bot.on('ready', () => {
+    console.log(bot)
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
 
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', (user, userID, channelID, message, evt) => {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) === '!') {
