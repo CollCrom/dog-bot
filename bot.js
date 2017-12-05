@@ -33,7 +33,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         process.stdout.on('data', (data)=>{
             bot.sendMessage({
                 to: channelID,
-                message: data
+                message: data + '<--- ' + args
             });
         })
      }
