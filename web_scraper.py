@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 browser = webdriver.PhantomJS()
-search_query = sys.argv[1].replace(' ', '+')
+search_query = sys.argv[1].replace(' ', '%20')
 
 browser.get("https://imgur.com/search/relevance/all?q_type=png&q_all=" + search_query)
 
@@ -22,7 +22,7 @@ for photo in photos:
 if not pic_arr:
 	print('sorry we couldn\'t find anything =[')
 else:
-	print(random.choice(pic_arr))
+	print(random.choice(pic_arr), len(pic_arr))
 
 sys.stdout.flush()
 browser.quit()
