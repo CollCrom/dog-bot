@@ -5,9 +5,9 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 browser = webdriver.PhantomJS()
-#search_query = sys.argv[1].replace(' ', '+')
+search_query = sys.argv[1].replace(' ', '+')
 
-browser.get("https://imgur.com/search/relevance/all?q_type=png&q_all=" + 'dog')
+browser.get("https://imgur.com/search/relevance/all?q_type=png&q_all=" + search_query)
 
 pic_arr = [];
 

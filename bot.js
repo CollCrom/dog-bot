@@ -1,42 +1,21 @@
-const Discord = require('discord.io');
-const logger = require('winston');
-const fs = require("fs");
+const Discord = require("discord.js");
 const spawn = require("child_process").spawn;
+const client = new Discord.Client();
 require('dotenv').config();
 
-// Configure logger settings
-logger.remove(logger.transports.Console);
-logger.add(logger.transports.Console, {
-    colorize: true
-});
-logger.level = 'debug';
-
-// Initialize Discord Bot
-const bot = new Discord.Client({
-   token: process.env.BOT_TOKEN,
-   autorun: true
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
-bot.on('ready', () => {
-    console.log(bot)
-    logger.info('Connected');
-    logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
-});
-
-
-bot.on('message', (user, userID, channelID, message, evt) => {
-    // Our bot needs to know if it will execute a command
-    // It will listen for messages that will start with `!`
-    if (message.substring(0, 1) === '!') {
-        let args = message.substring(1);
-        const process = spawn('python',['./web_scraper.py', args])
-        process.stdout.on('data', (data)=>{
-            bot.sendMessage({
-                to: channelID,
-                message: data + '<--- ' + args
-            });
+client.on('message', msg => {
+if (msg.content.substring(0, 1) === '!') {
+        let args = msg.content.substring(1);
+        const py = spawn('python',['web_scraper.py', args])
+        py.stdout.on('data', (data)=>{
+        	data = data.toString()
+            msg.reply(data);
         })
-     }
+    }
 });
+
+client.login(process.env.BOT_TOKEN);
