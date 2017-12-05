@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 browser = webdriver.PhantomJS()
 search_query = sys.argv[1].replace(' ', '%20')
 
-browser.get("https://imgur.com/search/relevance/all?q_type=png&q_all=" + search_query)
+browser.get("https://imgur.com/search/relevance/all?q_exactly=" + search_query + "&q_type=png&q_all=")
 
 pic_arr = [];
 
