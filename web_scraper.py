@@ -16,7 +16,6 @@ photos = browser.find_elements_by_class_name("post")
 for photo in photos:
 	img_elem = photo.find_element_by_tag_name("a")
 	picture = img_elem.get_attribute("href")
-	#picture = picture.replace("/gallery", "") + '.png'
 	pic_arr.append(picture)
 
 if not pic_arr:
